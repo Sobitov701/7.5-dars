@@ -1,1 +1,2 @@
-export { defult as Sidebar } from "./Sidebar";
+export { default as Sidebar } from "./Sidebar/Sidebar";
+export { default as ProsetsedRouter } from "./ProsetsedRouter";

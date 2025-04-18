@@ -1,4 +1,4 @@
-import React from "react";
+import style from "./transactions.module.scss";
 
 function Transactions() {
   return <div>Transactions</div>;

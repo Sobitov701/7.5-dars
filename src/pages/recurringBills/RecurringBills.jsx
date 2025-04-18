@@ -1,4 +1,4 @@
-import "./recurringBills.scss";
+import style from "./recurringBills.module.scss";
 
 function RecurringBills() {
   return <div>RecurringBills</div>;

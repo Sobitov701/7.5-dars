@@ -1,4 +1,4 @@
-import React from "react";
+import style from "./budget.module.scss";
 
 function Budgets() {
   return <div>Budgets</div>;

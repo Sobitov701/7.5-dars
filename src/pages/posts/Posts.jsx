@@ -1,4 +1,4 @@
-import React from "react";
+import style from "./posts.module.scss";
 
 function Posts() {
   return <div>Posts</div>;

@@ -1,4 +1,4 @@
-import React from "react";
+import style from "./overview.module.scss";
 
 function Overview() {
   return <div>Overview</div>;

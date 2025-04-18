@@ -1,3 +1,5 @@
+@use "../../src/scss/variabes.scss" as *;
+
 *,
 *::after,
 *::before {
@@ -14,6 +16,10 @@ html {
 
 body {
   font-family: "Public Sans";
+  font-weight: 400;
+  font-size: $text-preset-4;
+  line-height: $line-height-100;
+  color: $grey-500;
 }
 
 ul,
@@ -29,4 +35,13 @@ img {
 a {
   display: inline-block;
   text-decoration: none;
+}
+
+main {
+  background-color: #f2f3f7;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: 300px;
 }

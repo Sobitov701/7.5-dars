@@ -1,3 +1,3 @@
-@use "./scss/fonts";
-@use "./scss/reset";
-@use "./scss/variabes";
+@use "./scss/variabes" as *;
+@use "./scss/reset" as *;
+@use "./scss/fonts" as *;

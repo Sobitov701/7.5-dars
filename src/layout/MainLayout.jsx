@@ -1,11 +1,14 @@
-import React from "react";
+import style from "./MainLayput.module.scss";
 import { Sidebar } from "../componets";
+import { Outlet } from "react-router-dom";
 
 function MainLayout() {
   return (
     <>
       <Sidebar />
-      <main>main</main>
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }
