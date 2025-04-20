@@ -3,6 +3,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import MainLayout from "./layout/MainLayout";
 import Overview from "./pages/overview/Overview";
@@ -12,11 +13,10 @@ import RecurringBills from "./pages/recurringBills/RecurringBills";
 import Transactions from "./pages/transactions/Transactions";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-
 import { ProsetsedRouter } from "./componets";
 
 function App() {
-  const user = true;
+  const user = useSelector((state) => state.user.user);
 
   const router = createBrowserRouter([
     {

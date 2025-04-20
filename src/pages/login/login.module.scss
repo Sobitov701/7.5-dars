@@ -1,0 +1,75 @@
+.login {
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  padding: 2rem;
+  height: inherit;
+}
+
+.login_left {
+  background-image: url("../images/illustration-authentication.svg");
+  background-size: cover;
+  background-position: center;
+  padding: 4rem;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+
+  img {
+    margin-bottom: auto;
+  }
+  h3 {
+    font-size: 3.2rem;
+    margin-bottom: 2.4rem;
+    line-height: 120%;
+  }
+
+  p {
+    line-height: 150%;
+  }
+}
+
+.login_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  div {
+    background-color: #fff;
+    padding: 3.2rem;
+    border-radius: 1.2rem;
+    width: 100%;
+    max-width: 560px;
+  }
+}
+
+.login_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__title {
+  margin-bottom: 3.2rem;
+  color: #201f24;
+  font-size: 3.2rem;
+}
+
+.login_btn {
+  margin-top: 3rem;
+  background-color: #201f24;
+  color: #fff;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}

@@ -20,6 +20,12 @@ body {
   font-size: $text-preset-4;
   line-height: $line-height-100;
   color: $grey-500;
+  height: 100%;
+  background-color: #f8f4f0;
+}
+
+#root {
+  height: 100%;
 }
 
 ul,
@@ -41,7 +47,16 @@ main {
   background-color: #f2f3f7;
 }
 
-#root {
+main-layout {
   display: grid;
   grid-template-columns: 300px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1500px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-left: auto;
+  margin-right: auto;
 }
