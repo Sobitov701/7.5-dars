@@ -26,7 +26,13 @@ export const useRegist = () => {
       dispatch(login(user));
       setData(user);
     } catch (error) {
-      toast.error(error.message);
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("Bu email allaqachon ro'yxatdan o'tgan.");
+      } else if (error.code === "auth/weak-password") {
+        toast.error("Parol juda oddiy, iltimos kuchliroq parol kiriting.");
+      } else {
+        toast.error(error.message);
+      }
       console.log(error.message);
     } finally {
       setIsPending(false);

@@ -83,6 +83,7 @@ function App() {
       element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
+  useEffect;
 
   return <RouterProvider router={router} />;
 }
