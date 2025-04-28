@@ -1,91 +1,59 @@
+import React, { useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-
 import MainLayout from "./layout/MainLayout";
 import Overview from "./pages/overview/Overview";
 import Budgets from "./pages/budget/Budgets";
 import Posts from "./pages/posts/Posts";
 import RecurringBills from "./pages/recurringBills/RecurringBills";
-import Transactions from "./pages/transactions/Transactions";
-import Login from "./pages/login/Login";
+import Tarnsactions from "./pages/transactions/Transactions";
 import Register from "./pages/register/Register";
-import { ProsetsedRouter } from "./componets";
-import { useEffect } from "react";
+import Login from "./pages/login/Login";
+import ProtectedRoutes from "./componets/ProsetsedRouter";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
-import { login } from "./app/feature/userSlice";
+import { login, isAuthReady } from "./app/feature/userSlice";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
+  const { user, authReady } = useSelector((store) => store.user);
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const updatedUser = {
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName || "No Name",
-          photoURL: user.photoURL || "https://via.placeholder.com/150",
-        };
-        dispatch(login(updatedUser));
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        dispatch(login(currentUser));
       }
+      dispatch(isAuthReady());
     });
 
     return () => unsub();
   }, [dispatch]);
 
-  const router = createBrowserRouter([
+  const routes = createBrowserRouter([
     {
       path: "/",
       element: (
-        <ProsetsedRouter user={user}>
+        <ProtectedRoutes user={user}>
           <MainLayout />
-        </ProsetsedRouter>
+        </ProtectedRoutes>
       ),
       children: [
-        {
-          index: true,
-          element: <Overview />,
-        },
-        {
-          path: "/budgets",
-          element: <Budgets />,
-        },
-        {
-          path: "/overview",
-          element: <Overview />,
-        },
-        {
-          path: "/posts",
-          element: <Posts />,
-        },
-        {
-          path: "/recurringBills",
-          element: <RecurringBills />,
-        },
-        {
-          path: "/transactions",
-          element: <Transactions />,
-        },
+        { index: true, element: <Overview /> },
+        { path: "/budgets", element: <Budgets /> },
+        { path: "/posts", element: <Posts /> },
+        { path: "/recurringbills", element: <RecurringBills /> },
+        { path: "/transactions", element: <Tarnsactions /> },
       ],
     },
-    {
-      path: "/login",
-      element: user ? <Navigate to="/" /> : <Login />,
-    },
-    {
-      path: "/register",
-      element: user ? <Navigate to="/" /> : <Register />,
-    },
+    { path: "/login", element: user ? <Navigate to="/" /> : <Login /> },
+    { path: "/register", element: user ? <Navigate to="/" /> : <Register /> },
   ]);
-  useEffect;
 
-  return <RouterProvider router={router} />;
-}
+  return authReady && <RouterProvider router={routes} />;
+};
 
 export default App;

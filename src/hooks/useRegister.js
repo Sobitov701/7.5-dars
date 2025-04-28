@@ -9,7 +9,7 @@ export const useRegist = () => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  const [isPending, setIsPending] = useState(null);
 
   const register = async (displayName, email, password) => {
     setIsPending(true);

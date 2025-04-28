@@ -1,3 +1,11 @@
 .main_layout {
   display: flex;
+  width: 100%;
+
+  height: auto;
+}
+
+.main_layout_main {
+  max-width: 100%;
+  width: 100%;
 }
